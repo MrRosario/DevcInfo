@@ -1,6 +1,7 @@
 body{
     background-color: #ffffff;
     font-family: 'Courier New', Courier, monospace;
+    font-size: 18px
 }
 *{
     margin: 0;
@@ -11,10 +12,18 @@ header{
     width: 100%;
     background-color: #337ab7;
 }
+main{
+  padding: 0px 10px 0px 10px;
+}
+ul li{
+  list-style-type: none;
+}
 div.scrollMenu{
   margin-top: 30px;
-  overflow: auto;
   white-space: nowrap;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
 }
 div.scrollMenu a {
     display: inline-block;
@@ -29,10 +38,11 @@ div.scrollMenu a {
     font-family: monospace;
 }
 .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    -webkit-animation: fadeEffect 1s;
-    animation: fadeEffect 1s;
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+  margin-top: 20px;
 }
 @-webkit-keyframes fadeEffect {
     from {opacity: 0;}

@@ -1,3 +1,5 @@
+document.getElementById("defaultOpen").click();
+
 function openCity(evt, categoryName) {
     let i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -11,4 +13,17 @@ function openCity(evt, categoryName) {
     document.getElementById(categoryName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-document.getElementById("defaultOpen").click();
+
+function ram(){
+  let ramElement =  document.getElementById("ram");
+  let ramSize = navigator.deviceMemory;
+
+  ramElement.innerHTML = ramSize || 'unknown';
+}
+
+function deviceModel(){
+  
+}
+
+ram();
+
