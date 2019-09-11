@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head') %>
+<body>
+    <% include ../partials/nav %>
+    
+   <div class="scrollMenu">
+        <a href="#hardware" class="tablinks" onclick="openCity(event, 'Hardware')" id="defaultOpen"> Hardware </a>
+        <a href="#network"  class="tablinks" onclick="openCity(event, 'Network')">  Network </a>
+        <a href="#location" class="tablinks" onclick="openCity(event, 'Location')"> Location </a>
+        <a href="#browser"  class="tablinks" onclick="openCity(event, 'Browser')">  Browser </a>
+   </div>
+
+   <div id="Hardware" class="tabcontent">
+      <h3>Hardware</h3>
+      <p>Hardware content.</p>
+    </div>
+    
+    <div id="Network" class="tabcontent">
+      <h3>Network</h3>
+      <p>Network content.</p> 
+    </div>
+    
+    <div id="Location" class="tabcontent">
+      <h3>Location</h3>
+      <p>Location Content</p>
+    </div>
+
+    <div id="Browser" class="tabcontent">
+      <h3>Browser</h3>
+      <p>Browser Content</p>
+    </div>
+      
+</body>   
+    <script src="../../public/js/script.js"> </script>     
+</html>
