@@ -6,46 +6,46 @@
 
    <main>
       <div class="scrollMenu">
-          <a href="#hardware" class="tablinks" onclick="openCity(event, 'Hardware')" id="defaultOpen"> Hardware </a>
-          <a href="#network"  class="tablinks" onclick="openCity(event, 'Network')">  Network </a>
-          <a href="#location" class="tablinks" onclick="openCity(event, 'Location')"> Location </a>
-          <a href="#browser"  class="tablinks" onclick="openCity(event, 'Browser')">  Browser </a>
+          <a href="#hardware" class="tablinks" onclick="openTab(event, 'Hardware')" id="defaultOpen"> Hardware </a>
+          <a href="#network"  class="tablinks" onclick="openTab(event, 'Network')">  Network </a>
+          <a href="#location" class="tablinks" onclick="openTab(event, 'Location')"> Location </a>
+          <a href="#browser"  class="tablinks" onclick="openTab(event, 'Browser')">  Browser </a>
      </div>
-    
+    <!-- <p id="test"> </p> -->
     <div id="Hardware" class="tabcontent">
       <ul>
         <li>
-          <p>Device Type: <span id="dvctype"> </span></p>
+          <p>Device Type: <span class="deviceRes" id="dvctype"> </span></p>
         </li>
 
         <li>
-          <p>RAM: <span id="ram"> </span></p>
+          <p>RAM: <span class="deviceRes" id="ram"> </span></p>
         </li>
         <li>
-          <p>OS: <span id="os"> </span></p>
+          <p>SO: <span class="deviceRes" id="SO"> </span></p>
         </li>
         <li>
-          <p>Device/Model: <span> </span></p>
+          <p>Device/Model: <span class="deviceRes"> </span></p>
         </li>
 
         <li>
-          <p>CPU: <span> </span></p>
+          <p>CPU: <span class="deviceRes"> </span></p>
         </li>
 
         <li>
           <p>Batery:</p>
-
+          <ul>
+            <li>Level: <span class="deviceRes" id="bateryLevel"> </span></li>
+            <li>Charging: <span class="deviceRes" id="bateryStatus"> </span></li>
+          </ul>
         </li>
 
         <li>
           <p>Screen Size: <span> </span> </p>
         </li>
-        <li>
-          <p>Manifacturer: <span> </span> </p>
-        </li>
 
         <li>
-          <p>Graphic car name: <span> </span> </p>
+          <p>Graphic card name: <span> </span> </p>
         </li>
         
       </ul>

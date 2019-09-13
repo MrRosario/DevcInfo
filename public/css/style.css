@@ -24,6 +24,14 @@ div.scrollMenu{
   overflow-x:scroll;
   overflow-y:hidden;
   -webkit-overflow-scrolling:touch;
+  scrollbar-width: none; /* Hide scrollbar Only on Firefox 64+ */
+}
+div.scrollMenu::-webkit-scrollbar{
+  display: none;
+}
+.deviceRes{
+  font-size: 16px;
+  font-weight: bold;
 }
 div.scrollMenu a {
     display: inline-block;
