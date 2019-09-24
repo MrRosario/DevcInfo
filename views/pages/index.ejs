@@ -6,13 +6,13 @@
 
    <main>
       <div class="scrollMenu">
-          <a href="#hardware" class="tablinks" onclick="openTab(event, 'Hardware')" id="defaultOpen"> Hardware </a>
+          <a href="#hardware" class="tablinks" onclick="openTab(event, 'Hardware')" id="defaultOpen"> Device </a>
           <a href="#network"  class="tablinks" onclick="openTab(event, 'Network')">  Network </a>
           <a href="#location" class="tablinks" onclick="openTab(event, 'Location')"> Location </a>
           <a href="#browser"  class="tablinks" onclick="openTab(event, 'Browser')">  Browser </a>
      </div>
-    <!-- <p id="test"> </p> -->
-    <div id="Hardware" class="tabcontent">
+    
+    <section id="Hardware" class="tabcontent">
       <ul>
         <li>
           <p>Device Type: <span class="deviceRes" id="dvctype"> </span></p>
@@ -24,47 +24,55 @@
         <li>
           <p>SO: <span class="deviceRes" id="SO"> </span></p>
         </li>
+
         <li>
-          <p>Device/Model: <span class="deviceRes"> </span></p>
+          <p>Screen Size: <span class="deviceRes" id="screenSize"> </span> </p>
         </li>
 
         <li>
-          <p>CPU: <span class="deviceRes"> </span></p>
-        </li>
-
-        <li>
-          <p>Batery:</p>
-          <ul>
-            <li>Level: <span class="deviceRes" id="bateryLevel"> </span></li>
-            <li>Charging: <span class="deviceRes" id="bateryStatus"> </span></li>
+          <span>CPU: </span>
+          <i class="arrow down accordion"></i>
+          <ul class="panel activated" style="display: block">
+            <li>Number of cores: <span class="deviceRes" id="coreNum"> </span></li>
           </ul>
         </li>
 
         <li>
-          <p>Screen Size: <span> </span> </p>
+          <span>Batery (live):</s>
+          <i class="arrow down accordion"></i>
+          <ul class="panel">
+            <li>Level: <span class="deviceRes" id="bateryLevel">Detecting... </span></li>
+            <li>Charging: <span class="deviceRes" id="bateryStatus">Detecting... </span></li>
+          </ul>
         </li>
 
         <li>
-          <p>Graphic card name: <span> </span> </p>
+          <span>Graphic card name: </span>
+          <i class="arrow down accordion"></i>
+          <ul class="panel" style="display: block">
+            <li>Vendor: <span class="deviceRes" id="vendor"> </span></li>
+            <li>Renderer: <span class="deviceRes" id="renderer"> </span></li>
+          </ul>
         </li>
         
       </ul>
-    </div>
+    </section>
     
-    <div id="Network" class="tabcontent">
+    <section id="Network" class="tabcontent">
       <h3>Network</h3>
       <p>Network content.</p> 
-    </div>
+    </section>
     
-    <div id="Location" class="tabcontent">
+    <section id="Location" class="tabcontent">
       <h3>Location</h3>
       <p>Location Content</p>
-    </div>
+    </section>
 
-    <div id="Browser" class="tabcontent">
+    <section id="Browser" class="tabcontent">
       <h3>Browser</h3>
       <p>Browser Content</p>
-    </div>
+    </section>
+    
    </main>
       
 </body>   

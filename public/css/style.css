@@ -30,8 +30,8 @@ div.scrollMenu::-webkit-scrollbar{
   display: none;
 }
 .deviceRes{
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: bolder;
 }
 div.scrollMenu a {
     display: inline-block;
@@ -52,6 +52,7 @@ div.scrollMenu a {
   animation: fadeEffect 1s;
   margin-top: 20px;
 }
+
 @-webkit-keyframes fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -61,10 +62,34 @@ div.scrollMenu a {
   from {opacity: 0;}
   to {opacity: 1;}
 }
-/* div.scrollMenu a:hover {
-  background-color: #337ab7;
-} */
+ul li {
+  margin: 0 0 5px 0;
+}
 div.scrollMenu a.active {
     background-color: #337ab7;
-  }
-  
+} 
+.panel {
+  display: none;
+  background-color: white;
+  overflow: hidden;
+  margin-left: 10px;
+  border-left-color: #337ab7;
+  border-left-style: groove;
+  border-left-width: 2px;
+}
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+i {
+  border: solid black;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 3px;
+  width: 5px;
+  height: 5px;
+  cursor: pointer;
+}
+/* .active, .accordion:hover {
+  background-color: #ccc; 
+} */
