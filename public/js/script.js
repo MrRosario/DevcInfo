@@ -28,6 +28,7 @@ let Hardware = {
     this.screen();
     this.getVideoCardInfo();
     this.cpu();
+    this.connectionType();
   },
   ram: () => {
     let ramElement =  document.getElementById("ram");
@@ -189,6 +190,52 @@ let Hardware = {
   },
   cpu: () => {
     document.getElementById('coreNum').innerHTML = window.navigator.hardwareConcurrency;
+  },
+  connectionType: () => {
+    let connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  
+    let conTpEl       = document.getElementById("connectionType");
+    let downlinkEl    = document.getElementById("downlink");
+    let rttEl         = document.getElementById("rtt");
+    let downlinkMaxEl = document.getElementById("downlinkMax");
+    let effectiveType = document.getElementById("effectiveType");
+    let saveDataEl    = document.getElementById("saveData");
+    let intAcc        = document.getElementById('intAcc');
+
+    if(navigator.onLine){
+      intAcc.innerHTML = 'online';
+    }else{
+      intAcc.innerHTML = 'offline';
+    }
+
+    connection.addEventListener('change', updateConnectionStatus);
+    window.addEventListener('online', handleConnectionChange);
+    window.addEventListener('offline', handleConnectionChange);
+
+    function updateConnectionStatus() {
+      
+      console.log("Connection changed to " + connection.downlink + 'Mb/s');
+
+      conTpEl.innerHTML = connection.type ? connection.type : 'unknown';
+      downlinkEl.innerHTML = connection.downlink + 'Mb/s';
+      rttEl.innerHTML = connection.rtt + 'ms';
+      downlinkMaxEl.innerHTML = connection.downlinkMax + 'Mb/s';
+      effectiveType.innerHTML = connection.effectiveType;
+      saveDataEl.innerHTML = connection.saveData;
+    }
+    updateConnectionStatus();
+
+    function handleConnectionChange(event){
+      console.log(event);
+      if(event.type == "offline"){
+        intAcc.innerHTML = 'offline';
+        console.log("You lost connection.");
+      }
+      if(event.type == "online"){
+        intAcc.innerHTML = 'online';
+        console.log("You are now back online.");
+      }
+    }
   }
 };
 let Network = {
@@ -206,7 +253,6 @@ var i;
 
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
-    // this.classList.toggle("active");
     var panel = this.nextElementSibling;
     if (panel.style.display === "block") {
       panel.style.display = "none";
@@ -218,3 +264,4 @@ for (i = 0; i < acc.length; i++) {
 
 
 
+console.log(navigator.platform);

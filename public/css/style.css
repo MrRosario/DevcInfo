@@ -32,6 +32,7 @@ div.scrollMenu::-webkit-scrollbar{
 .deviceRes{
   font-size: 18px;
   font-weight: bolder;
+  word-break: break-word;
 }
 div.scrollMenu a {
     display: inline-block;

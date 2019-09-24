@@ -17,18 +17,15 @@
         <li>
           <p>Device Type: <span class="deviceRes" id="dvctype"> </span></p>
         </li>
-
         <li>
           <p>RAM: <span class="deviceRes" id="ram"> </span></p>
         </li>
         <li>
           <p>SO: <span class="deviceRes" id="SO"> </span></p>
         </li>
-
         <li>
           <p>Screen Size: <span class="deviceRes" id="screenSize"> </span> </p>
         </li>
-
         <li>
           <span>CPU: </span>
           <i class="arrow down accordion"></i>
@@ -36,7 +33,6 @@
             <li>Number of cores: <span class="deviceRes" id="coreNum"> </span></li>
           </ul>
         </li>
-
         <li>
           <span>Batery (live):</s>
           <i class="arrow down accordion"></i>
@@ -45,7 +41,6 @@
             <li>Charging: <span class="deviceRes" id="bateryStatus">Detecting... </span></li>
           </ul>
         </li>
-
         <li>
           <span>Graphic card name: </span>
           <i class="arrow down accordion"></i>
@@ -54,13 +49,47 @@
             <li>Renderer: <span class="deviceRes" id="renderer"> </span></li>
           </ul>
         </li>
-        
       </ul>
     </section>
     
     <section id="Network" class="tabcontent">
-      <h3>Network</h3>
-      <p>Network content.</p> 
+      
+        <ul>
+          <li> <span>Connection type:</span> <span class="deviceRes" id="connectionType"> </span> </li>
+
+          <li> 
+            <span>IP address:</span> 
+            <i class="arrow down accordion"></i>
+            <ul class="panel" style="display: block">
+              <li>Your IPv6: <span class="deviceRes"> <%= NetworkData.publicIpv6 %> </span></li>
+              <li>Your IPv4: <span class="deviceRes"> <%= NetworkData.publicIpv4 %> </span></li>
+            </ul>
+          </li>
+
+          <li> 
+            <span>Local IP address:</span> 
+            <i class="arrow down accordion"></i>
+            <ul class="panel" style="display: block">
+              <li>Your IPv6: <span class="deviceRes"> <%= NetworkData.privateIpv6 %> </span></li>
+              <li>Your IPv4: <span class="deviceRes"> <%= NetworkData.privateIpv4 %> </span></li>
+            </ul>
+          </li>
+
+          <li> 
+            <span>Network status:</span> 
+            <i class="arrow down accordion"></i>
+            <ul class="panel" style="display: block">
+              <li>Internet Access: <span class="deviceRes" id="intAcc">  </span></li>
+              <li>downlink: <span class="deviceRes" id="downlink">  </span></li>
+              <li>rtt: <span class="deviceRes" id="rtt">  </span></li>
+              <li>downlinkMax: <span class="deviceRes" id="downlinkMax">  </span></li>
+              <li>effectiveType: <span class="deviceRes" id="effectiveType">  </span></li>
+              <li>saveData: <span class="deviceRes" id="saveData">  </span></li>
+            </ul>
+          </li>
+          
+        </ul>
+      
     </section>
     
     <section id="Location" class="tabcontent">
