@@ -5,10 +5,11 @@
     <% include ../partials/nav %>
 
    <main>
+     
       <div class="scrollMenu">
-          <a href="#hardware" class="tablinks" onclick="openTab(event, 'Hardware')" id="defaultOpen"> Device </a>
+          <a href="#hardware" class="tablinks" onclick="openTab(event, 'Hardware')"> Device </a>
           <a href="#network"  class="tablinks" onclick="openTab(event, 'Network')">  Network </a>
-          <a href="#location" class="tablinks" onclick="openTab(event, 'Location')"> Location </a>
+          <a href="#location" class="tablinks" onclick="openTab(event, 'Location')" id="defaultOpen"> Location </a>
           <a href="#browser"  class="tablinks" onclick="openTab(event, 'Browser')">  Browser </a>
      </div>
     
@@ -53,7 +54,6 @@
     </section>
     
     <section id="Network" class="tabcontent">
-      
         <ul>
           <li> <span>Connection type:</span> <span class="deviceRes" id="connectionType"> </span> </li>
 
@@ -93,8 +93,37 @@
     </section>
     
     <section id="Location" class="tabcontent">
-      <h3>Location</h3>
-      <p>Location Content</p>
+      <ul>
+        <li>
+          <p>Country: <span class="deviceRes" id="country"> </span> </p>
+        </li>
+        <li>
+          <p>Region: <span class="deviceRes" id="region"> </span> </p>
+        </li>
+        <li>
+          <p>City: <span class="deviceRes" id="city"> </span> </p>
+        </li>
+        <li> 
+          <span>Geolocation:</span> 
+          <i class="arrow down accordion"></i>
+          <button>Detect</button>
+          <ul class="panel" style="display: block">
+            <li>Latitude: <span class="deviceRes" id="latitude">  </span></li>
+            <li>Your IPv4: <span class="deviceRes" id="longitude">  </span></li>
+          </ul>
+        </li>
+        <li>
+          <p>ISP: <span class="deviceRes" id="isp"> </span> </p>
+        </li>
+        <li> 
+          <span>Date/Time:</span> 
+          <i class="arrow down accordion"></i>
+          <ul class="panel" style="display: block">
+            <li>Local: <span class="deviceRes" id="local">  </span></li>
+            <li>Time zone: <span class="deviceRes" id="timezone">  </span></li>
+          </ul>
+        </li>
+      </ul>
     </section>
 
     <section id="Browser" class="tabcontent">
@@ -105,5 +134,5 @@
    </main>
       
 </body>   
-    <script src="../../public/js/script.js"> </script>     
+  <% include ../partials/scripts %> 
 </html>

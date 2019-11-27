@@ -1,5 +1,31 @@
-<header>
-  <a href="/" id="logo">
-    <!-- <img src="../../public/icones/logo.png" alt="logo"> -->
+<header class="header">
+  <a href="/" id="logo" class="header__logo">
+    devcInfo.com
   </a>
+
+  <nav class="header__navBar">
+    <ul class="list">
+      <li class="list__item"> 
+        <a class="<%= pageTitle == 'Home' ? 'headerLink headerLink--active' : 'headerLink' %>" href="/">
+            Device
+        </a> 
+      </li>
+      <li class="list__item"> 
+        <a class="<%= pageTitle == 'Network' ? 'headerLink headerLink--active' : 'headerLink' %>" href="/network">
+            Network
+        </a> 
+      </li>
+      <li class="list__item"> 
+        <a class="<%= pageTitle == 'Location' ? 'headerLink headerLink--active' : 'headerLink' %>" href="/location">
+            Location
+        </a> 
+      </li>
+      <li class="list__item"> 
+        <a class="<%= pageTitle == 'Browser' ? 'headerLink headerLink--active' : 'headerLink' %>" href="/browser">
+            Browser
+        </a> 
+      </li>
+    </ul>
+  </nav>
+
 </header>

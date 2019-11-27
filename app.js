@@ -1,6 +1,5 @@
 const express    = require("express");
 const bodyParser = require("body-parser");
-const geoip      = require('geoip-lite');
 const publicIp   = require('public-ip');
 const internalIp = require('internal-ip');
 const app        = express();
@@ -15,9 +14,6 @@ app.set('view engine', 'ejs');
 
 app.get('/', async (req, res) => {
     // // const _ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    // var ip = await publicIp.v4();
-    // var geo = geoip.lookup(ip);
-    // console.log(geo);
 
     const Network = {
         publicIpv4: await publicIp.v4(),
@@ -28,6 +24,23 @@ app.get('/', async (req, res) => {
 
     res.render('pages/index',{
         NetworkData: Network,
+        pageTitle: "Home"
+    });
+});
+
+app.get('/network', (req, res) => {
+    res.render('pages/network',{
+        pageTitle: "Network"
+    });
+});
+app.get('/location', (req, res) => {
+    res.render('pages/location',{
+        pageTitle: "Location"
+    });
+});
+app.get('/browser', (req, res) => {
+    res.render('pages/browser',{
+        pageTitle: "Browser"
     });
 });
 
