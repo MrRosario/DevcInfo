@@ -5,10 +5,21 @@
     <% include ../partials/nav %>
 
    <main>
-     <h1>Browser page</h1>
-    
+        <section id="Browser" class="tabcontent">
+            <h3>Browser</h3>
+            <p>Browser Content</p>
+        </section>
    </main>
       
 </body>   
   <% include ../partials/scripts %> 
+  <script>
+    document.addEventListener("DOMContentLoaded", () =>{
+      Browser.init();
+    });
+
+    let Browser = {
+        init: function() {},
+    };
+  </script>
 </html>

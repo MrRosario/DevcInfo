@@ -5,10 +5,85 @@
     <% include ../partials/nav %>
 
    <main>
-     <h1>Network page</h1>
-    
+      <section id="Network" class="network">
+          <ul class="list">
+            <li class="list__item"> <span>Connection type:</span> <span class="deviceRes" id="connectionType"> </span> </li>
+  
+            <li class="list__item"> 
+              <p>Public IP address: <i class="arrow arrow--down"></i> </p> 
+              <ul class="panel">
+                <li class="list__item">IPv6: <span class="deviceRes"> <%= NetworkData.publicIpv6 %> </span></li>
+                <li class="list__item">IPv4: <span class="deviceRes"> <%= NetworkData.publicIpv4 %> </span></li>
+              </ul>
+            </li>
+  
+            <li class="list__item"> 
+              <p>Local IP address: <i class="arrow arrow--down"></i> </p> 
+              <ul class="panel">
+                <li class="list__item">IPv6: <span class="deviceRes"> <%= NetworkData.privateIpv6 %> </span></li>
+                <li class="list__item">IPv4: <span class="deviceRes"> <%= NetworkData.privateIpv4 %> </span></li>
+              </ul>
+            </li>
+  
+            <li class="list__item"> 
+              <p>Network status: <i class="arrow arrow--down"></i> </p> 
+              <ul class="panel">
+                <li class="list__item">Internet Access: <span class="deviceRes" id="intAcc">  </span></li>
+                <li class="list__item">downlink: <span class="deviceRes" id="downlink">  </span></li>
+                <li class="list__item">rtt: <span class="deviceRes" id="rtt">  </span></li>
+                <li class="list__item">downlinkMax: <span class="deviceRes" id="downlinkMax">  </span></li>
+                <li class="list__item">effectiveType: <span class="deviceRes" id="effectiveType">  </span></li>
+                <li class="list__item">saveData: <span class="deviceRes" id="saveData">  </span></li>
+              </ul>
+            </li>
+            
+          </ul>
+        
+      </section>
    </main>
       
 </body>   
   <% include ../partials/scripts %> 
+  <script>
+    document.addEventListener("DOMContentLoaded", () =>{
+      Network.init();
+    });
+
+    let Network = {
+      init: function() {
+        this.connectionType();
+      },
+      connectionType: function() {
+        let e = navigator.connection || navigator.mozConnection || navigator.webkitConnection
+          , n = document.getElementById("connectionType")
+          , t = document.getElementById("downlink")
+          , o = document.getElementById("rtt")
+          , i = document.getElementById("downlinkMax")
+          , r = document.getElementById("effectiveType")
+          , a = document.getElementById("saveData")
+          , l = document.getElementById("intAcc");
+        function s() {
+            console.log("Connection changed to " + e.downlink + "Mb/s"),
+            n.innerHTML = e.type ? e.type : "unknown",
+            t.innerHTML = e.downlink + "Mb/s",
+            o.innerHTML = e.rtt + "ms",
+            i.innerHTML = e.downlinkMax + "Mb/s",
+            r.innerHTML = e.effectiveType,
+            a.innerHTML = e.saveData
+        }
+        function d(e) {
+            console.log(e),
+            "offline" == e.type && (l.innerHTML = "offline",
+            console.log("You lost connection.")),
+            "online" == e.type && (l.innerHTML = "online",
+            console.log("You are now back online."))
+        }
+        navigator.onLine ? l.innerHTML = "online" : l.innerHTML = "offline",
+        e.addEventListener("change", s),
+        window.addEventListener("online", d),
+        window.addEventListener("offline", d),
+        s()
+      }
+    };
+  </script>
 </html>

@@ -5,134 +5,244 @@
     <% include ../partials/nav %>
 
    <main>
-     
-      <div class="scrollMenu">
-          <a href="#hardware" class="tablinks" onclick="openTab(event, 'Hardware')"> Device </a>
-          <a href="#network"  class="tablinks" onclick="openTab(event, 'Network')">  Network </a>
-          <a href="#location" class="tablinks" onclick="openTab(event, 'Location')" id="defaultOpen"> Location </a>
-          <a href="#browser"  class="tablinks" onclick="openTab(event, 'Browser')">  Browser </a>
-     </div>
-    
-    <section id="Hardware" class="tabcontent">
-      <ul>
-        <li>
-          <p>Device Type: <span class="deviceRes" id="dvctype"> </span></p>
-        </li>
-        <li>
-          <p>RAM: <span class="deviceRes" id="ram"> </span></p>
-        </li>
-        <li>
-          <p>SO: <span class="deviceRes" id="SO"> </span></p>
-        </li>
-        <li>
-          <p>Screen Size: <span class="deviceRes" id="screenSize"> </span> </p>
-        </li>
-        <li>
-          <span>CPU: </span>
-          <i class="arrow down accordion"></i>
-          <ul class="panel activated" style="display: block">
-            <li>Number of cores: <span class="deviceRes" id="coreNum"> </span></li>
-          </ul>
-        </li>
-        <li>
-          <span>Batery (live):</s>
-          <i class="arrow down accordion"></i>
-          <ul class="panel">
-            <li>Level: <span class="deviceRes" id="bateryLevel">Detecting... </span></li>
-            <li>Charging: <span class="deviceRes" id="bateryStatus">Detecting... </span></li>
-          </ul>
-        </li>
-        <li>
-          <span>Graphic card name: </span>
-          <i class="arrow down accordion"></i>
-          <ul class="panel" style="display: block">
-            <li>Vendor: <span class="deviceRes" id="vendor"> </span></li>
-            <li>Renderer: <span class="deviceRes" id="renderer"> </span></li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-    
-    <section id="Network" class="tabcontent">
-        <ul>
-          <li> <span>Connection type:</span> <span class="deviceRes" id="connectionType"> </span> </li>
-
-          <li> 
-            <span>IP address:</span> 
-            <i class="arrow down accordion"></i>
-            <ul class="panel" style="display: block">
-              <li>Your IPv6: <span class="deviceRes"> <%= NetworkData.publicIpv6 %> </span></li>
-              <li>Your IPv4: <span class="deviceRes"> <%= NetworkData.publicIpv4 %> </span></li>
+        <section id="Hardware" class="hardware">
+            <ul class="list">
+                <li class="list__item">
+                    <p>Device Type: <span class="deviceRes" id="dvctype"> </span></p>
+                </li>
+                <li class="list__item">
+                    <p>RAM: <span class="deviceRes" id="ram"> </span></p>
+                </li>
+                <li class="list__item">
+                    <p>SO: <span class="deviceRes" id="SO"> </span></p>
+                </li>
+                <li class="list__item">
+                    <p>Screen Size: <span class="deviceRes" id="screenSize"> </span> </p>
+                </li>
+                <li class="list__item">
+                    <p>CPU:  <i class="arrow arrow--down"></i> </p>
+                    <ul class="panel">
+                        <li class="list__item">Number of cores: <span class="deviceRes" id="coreNum"> </span></li>
+                    </ul>
+                </li>
+                <li class="list__item">
+                    <p>Battery (live): <i class="arrow arrow--up"></i> </p>
+                    <ul class="panel" style="display: none;">
+                        <li class="list__item">Level: <span class="deviceRes" id="bateryLevel">Detecting... </span></li>
+                        <li class="list__item">Charging: <span class="deviceRes" id="bateryStatus">Detecting... </span></li>
+                    </ul>
+                </li>
+                <li class="list__item">
+                    <p>Graphic card name:  <i class="arrow arrow--down"></i> </p>
+                    <ul class="panel">
+                        <li class="list__item">Vendor: <span class="deviceRes" id="vendor"> </span></li>
+                        <li class="list__item">Renderer: <span class="deviceRes" id="renderer"> </span></li>
+                    </ul>
+                </li>
             </ul>
-          </li>
-
-          <li> 
-            <span>Local IP address:</span> 
-            <i class="arrow down accordion"></i>
-            <ul class="panel" style="display: block">
-              <li>Your IPv6: <span class="deviceRes"> <%= NetworkData.privateIpv6 %> </span></li>
-              <li>Your IPv4: <span class="deviceRes"> <%= NetworkData.privateIpv4 %> </span></li>
-            </ul>
-          </li>
-
-          <li> 
-            <span>Network status:</span> 
-            <i class="arrow down accordion"></i>
-            <ul class="panel" style="display: block">
-              <li>Internet Access: <span class="deviceRes" id="intAcc">  </span></li>
-              <li>downlink: <span class="deviceRes" id="downlink">  </span></li>
-              <li>rtt: <span class="deviceRes" id="rtt">  </span></li>
-              <li>downlinkMax: <span class="deviceRes" id="downlinkMax">  </span></li>
-              <li>effectiveType: <span class="deviceRes" id="effectiveType">  </span></li>
-              <li>saveData: <span class="deviceRes" id="saveData">  </span></li>
-            </ul>
-          </li>
-          
-        </ul>
-      
-    </section>
-    
-    <section id="Location" class="tabcontent">
-      <ul>
-        <li>
-          <p>Country: <span class="deviceRes" id="country"> </span> </p>
-        </li>
-        <li>
-          <p>Region: <span class="deviceRes" id="region"> </span> </p>
-        </li>
-        <li>
-          <p>City: <span class="deviceRes" id="city"> </span> </p>
-        </li>
-        <li> 
-          <span>Geolocation:</span> 
-          <i class="arrow down accordion"></i>
-          <button>Detect</button>
-          <ul class="panel" style="display: block">
-            <li>Latitude: <span class="deviceRes" id="latitude">  </span></li>
-            <li>Your IPv4: <span class="deviceRes" id="longitude">  </span></li>
-          </ul>
-        </li>
-        <li>
-          <p>ISP: <span class="deviceRes" id="isp"> </span> </p>
-        </li>
-        <li> 
-          <span>Date/Time:</span> 
-          <i class="arrow down accordion"></i>
-          <ul class="panel" style="display: block">
-            <li>Local: <span class="deviceRes" id="local">  </span></li>
-            <li>Time zone: <span class="deviceRes" id="timezone">  </span></li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-
-    <section id="Browser" class="tabcontent">
-      <h3>Browser</h3>
-      <p>Browser Content</p>
-    </section>
-    
+        </section>
    </main>
       
 </body>   
-  <% include ../partials/scripts %> 
+    <script>
+        document.addEventListener("DOMContentLoaded", () =>{
+            Hardware.init()
+        });
+
+        let Hardware = {
+            init: function() {
+                this.ram(),
+                this.battery(),
+                this.detectDevice(),
+                this.osAndBrowser(),
+                this.screen(),
+                this.getVideoCardInfo(),
+                this.cpu()
+            },
+            ram: () => {
+                let el = document.getElementById("ram");
+                let dvcmen = navigator.deviceMemory;
+
+                el.innerHTML = dvcmen || "unknown"
+                console.log(dvcmen);
+            },
+            battery: ()=>{
+                let e = document.getElementById("bateryLevel")
+                , n = document.getElementById("bateryStatus");
+                navigator.getBattery().then(t=>{
+                    function o() {
+                        n.textContent = t.charging ? "Yes" : "No",
+                        console.log("Battery charging? " + (t.charging ? "Yes" : "No"))
+                    }
+                    function i() {
+                        e.innerHTML = parseInt(100 * t.level) + "%",
+                        console.log("Battery level: " + 100 * t.level + "%")
+                    }
+                    o(),
+                    i(),
+                    t.addEventListener("chargingchange", ()=>{
+                        o()
+                    }
+                    ),
+                    t.addEventListener("levelchange", ()=>{
+                        i()
+                    }
+                    )
+                }
+                )
+            },
+            detectDevice: ()=>{
+                let el = document.getElementById("dvctype");
+                if (window.innerWidth > 768) {
+                    var devType = "Desktop";
+                    el.innerHTML = devType,
+                    console.log("=======device======", devType)
+                } else{
+                    window.innerWidth > 481 && window.innerWidth < 767 ? (devType = "Tablet",
+                    el.innerHTML = devType) : window.innerWidth < 480 && (devType = "Mobile",
+                    el.innerHTML = devType);
+                }
+            },
+            osAndBrowser: ()=>{
+                let e = {
+                    options: [],
+                    header: [navigator.platform, navigator.userAgent, navigator.appVersion, navigator.vendor, window.opera],
+                    dataos: [{
+                        name: "Windows Phone",
+                        value: "Windows Phone",
+                        version: "OS"
+                    }, {
+                        name: "Windows",
+                        value: "Win",
+                        version: "NT"
+                    }, {
+                        name: "iPhone",
+                        value: "iPhone",
+                        version: "OS"
+                    }, {
+                        name: "iPad",
+                        value: "iPad",
+                        version: "OS"
+                    }, {
+                        name: "Kindle",
+                        value: "Silk",
+                        version: "Silk"
+                    }, {
+                        name: "Android",
+                        value: "Android",
+                        version: "Android"
+                    }, {
+                        name: "PlayBook",
+                        value: "PlayBook",
+                        version: "OS"
+                    }, {
+                        name: "BlackBerry",
+                        value: "BlackBerry",
+                        version: "/"
+                    }, {
+                        name: "Macintosh",
+                        value: "Mac",
+                        version: "OS X"
+                    }, {
+                        name: "Linux",
+                        value: "Linux",
+                        version: "rv"
+                    }, {
+                        name: "Palm",
+                        value: "Palm",
+                        version: "PalmOS"
+                    }],
+                    databrowser: [{
+                        name: "Chrome",
+                        value: "Chrome",
+                        version: "Chrome"
+                    }, {
+                        name: "Firefox",
+                        value: "Firefox",
+                        version: "Firefox"
+                    }, {
+                        name: "Safari",
+                        value: "Safari",
+                        version: "Version"
+                    }, {
+                        name: "Internet Explorer",
+                        value: "MSIE",
+                        version: "MSIE"
+                    }, {
+                        name: "Opera",
+                        value: "Opera",
+                        version: "Opera"
+                    }, {
+                        name: "BlackBerry",
+                        value: "CLDC",
+                        version: "CLDC"
+                    }, {
+                        name: "Mozilla",
+                        value: "Mozilla",
+                        version: "Mozilla"
+                    }],
+                    init: function() {
+                        let e = this.header.join(" ");
+                        return {
+                            os: this.matchItem(e, this.dataos),
+                            browser: this.matchItem(e, this.databrowser)
+                        }
+                    },
+                    matchItem: (e,n)=>{
+                        let t, o, i, r, a, l = 0, s = 0;
+                        for (l = 0; l < n.length; l += 1)
+                            if (i = (t = new RegExp(n[l].value,"i")).test(e)) {
+                                if (o = new RegExp(n[l].version + "[- /:;]([\\d._]+)","i"),
+                                a = "",
+                                (r = e.match(o)) && r[1] && (r = r[1]),
+                                r)
+                                    for (r = r.split(/[._]+/),
+                                    s = 0; s < r.length; s += 1)
+                                        a += 0 === s ? r[s] + "." : r[s];
+                                else
+                                    a = "";
+                                return {
+                                    name: n[l].name,
+                                    version: a
+                                }
+                            }
+                        return {
+                            name: "unknown",
+                            version: 0
+                        }
+                    }
+                }.init();
+                document.getElementById("SO").innerHTML = `${e.os.name} ${e.os.version}`,
+                console.log(`${e.os.name} ${e.os.version}, ${e.browser.name} ${e.browser.version}`)
+            },
+            screen: ()=>{
+                let e = document.getElementById("screenSize");
+                const n = window.screen.height
+                , t = window.screen.width;
+                e.innerHTML = `${n} x ${t} pixels`
+            },
+            getVideoCardInfo: ()=>{
+                const e = document.createElement("canvas").getContext("webgl")
+                , n = document.getElementById("vendor")
+                , t = document.getElementById("renderer");
+                if (!e)
+                    return {
+                        error: "no webgl"
+                    };
+                const o = e.getExtension("WEBGL_debug_renderer_info")
+                , i = o ? {
+                    vendor: e.getParameter(o.UNMASKED_VENDOR_WEBGL),
+                    renderer: e.getParameter(o.UNMASKED_RENDERER_WEBGL)
+                } : {
+                    error: "no WEBGL_debug_renderer_info"
+                };
+                n.innerHTML = i.vendor || "unknown",
+                t.innerHTML = i.renderer || "unknown"
+            },
+            cpu: ()=>{
+                document.getElementById("coreNum").innerHTML = window.navigator.hardwareConcurrency
+            },
+        };
+    </script>
+    <% include ../partials/scripts %> 
 </html>
