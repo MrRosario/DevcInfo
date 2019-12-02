@@ -13,20 +13,12 @@ app.set('trust proxy', true);
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs');
 
-app.get('/', async (req, res) => {
-    // // const _ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
-    const Network = {
-        publicIpv4: await publicIp.v4(),
-        publicIpv6: await publicIp.v6(),
-        privateIpv4: await internalIp.v4(),
-        privateIpv6: await internalIp.v6(),
-    }
+app.get('/', (req, res) => {
 
     res.render('pages/index',{
-        NetworkData: Network,
         pageTitle: "Home"
     });
+    
 });
 
 app.get('/network', async (req, res) => {
