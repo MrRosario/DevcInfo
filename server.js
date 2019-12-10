@@ -13,11 +13,12 @@ app.set('trust proxy', true);
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    const _ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+app.get('/', async(req, res) => {
     
-    console.log("Ip Adress", _ip);
-
+    let privateIpv4 = await internalIp.v4();
+    let privateIpv6 = await internalIp.v6();
+    console.log(`Private ip4 ${privateIpv4}, Private ip6 ${privateIpv6}`);
+    
     res.render('pages/index',{
         pageTitle: "Home"
     });
@@ -47,10 +48,12 @@ app.get('/network', async (req, res) => {
 app.get('/location', async (req, res) => {
     try {
 
-        let ip = await publicIp.v4();
-        console.log(ip);
+        // let ip = await publicIp.v4();
+        const _publicIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-        const baseUrl =  `http://api.ipstack.com/${ip}?access_key=b8a3261cc4b4d85e9f509e776d3d5228`;
+        console.log("Public IP", _publicIp);
+
+        const baseUrl =  `http://api.ipstack.com/${_publicIp}?access_key=b8a3261cc4b4d85e9f509e776d3d5228`;
         const response = await axios.get(baseUrl);
 
         res.render('pages/location',{
