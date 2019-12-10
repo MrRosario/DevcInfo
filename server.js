@@ -44,15 +44,8 @@ app.get('/network', async (req, res) => {
 app.get('/location', async (req, res) => {
     try {
 
-        const Network = {
-            publicIpv4: await publicIp.v4(),
-            publicIpv6: await publicIp.v6(),
-            privateIpv4: await internalIp.v4(),
-            privateIpv6: await internalIp.v6(),
-        }
-        console.log(Network);
-        
         let ip = await publicIp.v4();
+        console.log(ip);
         
         const baseUrl =  `http://api.ipstack.com/${ip}?access_key=b8a3261cc4b4d85e9f509e776d3d5228`;
         const response = await axios.get(baseUrl);
