@@ -1,7 +1,6 @@
 const express    = require("express");
 const bodyParser = require("body-parser");
 const publicIp   = require('public-ip');
-const internalIp = require('internal-ip');
 const axios      = require('axios');
 const app        = express();
 const port       = process.env.PORT || 3000;
@@ -14,11 +13,7 @@ app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs');
 
 app.get('/', async(req, res) => {
-    
-    let privateIpv4 = await internalIp.v4();
-    let privateIpv6 = await internalIp.v6();
-    console.log(`Private ip4 ${privateIpv4}, Private ip6 ${privateIpv6}`);
-    
+
     res.render('pages/index',{
         pageTitle: "Home"
     });
@@ -28,13 +23,12 @@ app.get('/', async(req, res) => {
 app.get('/network', async (req, res) => {
 
     try{
-        const Network = {
-            publicIpv4: await publicIp.v4(),
-            publicIpv6: await publicIp.v6(),
-            privateIpv4: await internalIp.v4(),
-            privateIpv6: await internalIp.v6(),
-        }
-        console.log(Network);
+        
+        let publicIpv4 = await publicIp.v4(); //Pegando o ip do servidor local
+        let publicIpv6 = await publicIp.v6(); //Pegando o ip do servidor local
+        
+        console.log(publicIpv4);
+        console.log(publicIpv6);
     
         res.render('pages/network',{
             NetworkData: Network,
@@ -48,12 +42,9 @@ app.get('/network', async (req, res) => {
 app.get('/location', async (req, res) => {
     try {
 
-        // let ip = await publicIp.v4();
         const _publicIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-        console.log("Public IP", _publicIp);
-
-        const baseUrl =  `http://api.ipstack.com/${_publicIp}?access_key=b8a3261cc4b4d85e9f509e776d3d5228`;
+        const baseUrl  = `http://api.ipstack.com/${_publicIp}?access_key=b8a3261cc4b4d85e9f509e776d3d5228`;
         const response = await axios.get(baseUrl);
 
         res.render('pages/location',{
