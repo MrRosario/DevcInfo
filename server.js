@@ -20,23 +20,23 @@ app.get('/', async(req, res) => {
 
 });
 
-app.get('/network', async (req, res) => {
+app.get('/network', async(req, res) => {
 
-    
-    const Network = {
-        publicIpv4: await publicIp.v4(), //Pegando o ip do servidor local
-        publicIpv6: await publicIp.v6(), //Pegando o ip do servidor local
-    }
-    console.log(Network);
+    let publicIpv4 = await publicIp.v4(); //Pegando o ip do servidor local
+    let publicIpv6 = await publicIp.v6(); //Pegando o ip do servidor local
+
+    console.log("IPV4 ", publicIpv4);
+    console.log("IPV6 ", publicIpv6);
 
     res.render('pages/network',{
-        NetworkData: Network,
-        pageTitle: "Network"
+        pageTitle: "Network",
+        ipv4: publicIpv4,
+        ipv6: publicIpv6,
     });
     
 });
 
-app.get('/location', async (req, res) => {
+app.get('/location', async(req, res) => {
     try {
 
         const _publicIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
