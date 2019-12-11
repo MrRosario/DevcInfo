@@ -6,6 +6,14 @@ let App = {
     init: function(){
         this.hideContent();
         this.hideNavbar();
+
+        // document.addEventListener("click", (e) => {
+        //     console.log(e);
+        //     let headerMobile = document.getElementById("header__mobile");
+        //     if(e.target.className !== 'dot'){
+        //         headerMobile.style.display = 'none';
+        //     }
+        // });
     },
     hideContent: function(){
         let arrow = document.getElementsByClassName("arrow");
@@ -33,7 +41,9 @@ let App = {
         let btn__more = document.getElementById("btn__more");
 
         btn__more.addEventListener("click", function(){
-            alert("ola mundo")
+            let headerMobile = document.getElementById("header__mobile");
+
+            headerMobile.classList.toggle("activate--header");
         });
     }
 }

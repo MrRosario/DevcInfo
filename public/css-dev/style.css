@@ -1,15 +1,17 @@
 /*******************Global Settings***********************/
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
 body {
     background-color: #f0f0f0;
-    font-family: 'Courier New',Courier,monospace;
+    font-family: 'Ubuntu', sans-serif, Courier;
     font-size: 18px;
     overflow-x: hidden;
 }
-
 * {
     margin: 0;
     padding: 0
 }
+.header__mobile,
 .btn__more{
     display: none;
 }
@@ -109,7 +111,6 @@ main{
 .header__navBar li.list__item:last-of-type a{ 
     border-right: none 
 } 
-
 .headerLink--active{
     background-color: #f0f0f0;
     color: #000000;
@@ -119,45 +120,58 @@ main{
     main{
         width: unset;
     }
-    .btn__more{
-        display: flex;
-        flex-direction: column;
-        direction: rtl;
-        margin-right: 30px;
-        margin-bottom: 10px;
-    }
-    .btn__more .dot{
-        height: 15px;
-        width: 15px;
-        background-color: #000000;
-        border-radius: 50%;
-        display: block;
-    }
-    .hardware, .network, .location{
-        margin-top: 100px;
-    }
     .header {
         justify-content: space-between;
     }
-    .header__navBar{
-        margin-left: unset; 
-        margin-top: 100px;
-        margin-right: unset;
-        padding: unset;
-        background-color: unset;
-        z-index: 1;   
-    }
-    .header__navBar .list{
+    .header .btn__more{
         display: flex;
         flex-direction: column;
+        direction: rtl;
+        margin-right: 5px;
+        padding: 3px 16px;
+        border-radius: 20px;
+    }
+    .header .btn__more:hover{
+        background-color: rgba(0,0,0, 0.5);
+    }
+    .header .btn__more .dot{
+        height: 10px;
+        width: 10px;
+        background-color: #f0f0f0;
+        border-radius: 50%;
+        display: block;
+        margin-bottom: 2px;
+    }
+    .header .list{
+        display: none;
+    }
+    .header__mobile {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        z-index: 10;
         background-color: #337ab7;
+        margin-top: 2px;
+        margin-right: 2px;
+        padding: 8px 0;
+        width: 130px;
+        box-sizing: border-box;
+        float: right;
+        height: 120px;
     }
-    .header__navBar .list .list__item a{
-        padding: 5px 15px;
-        border-left: unset;
+    .header__mobile a{
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 5px;
+        background-color: #244b6d;
+        padding: 5px;
     }
-    .headerLink--active {
-        background-color: unset;
-        color: unset;
+    .header__mobile a:last-of-type{
+        margin-bottom: 0px;
+    }
+    .activate--header{
+        display: flex;
+        transition: all 2s ease-in-out;
     }
 }

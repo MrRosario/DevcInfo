@@ -23,14 +23,6 @@ app.get('/network', (req, res) => {
 
     let publicIpv4 = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-    let publicIpv6 = req.socket.address().family;
-    let ipTeste  = req.socket.address().address;
-
-    console.log("IPV4 ", publicIpv6);
-
-    console.log("IPV6 ", publicIpv6);
-    console.log("ipteste ", ipTeste);
-
     res.render('pages/network',{
         pageTitle: "Network",
         ipv4: publicIpv4,
