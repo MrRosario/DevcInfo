@@ -22,21 +22,18 @@ app.get('/', async(req, res) => {
 
 app.get('/network', async (req, res) => {
 
-    try{
-        
-        let publicIpv4 = await publicIp.v4(); //Pegando o ip do servidor local
-        let publicIpv6 = await publicIp.v6(); //Pegando o ip do servidor local
-        
-        console.log(publicIpv4);
-        console.log(publicIpv6);
     
-        res.render('pages/network',{
-            NetworkData: Network,
-            pageTitle: "Network"
-        });
-    }catch (error) {
-        console.error(error);
+    const Network = {
+        publicIpv4: await publicIp.v4(), //Pegando o ip do servidor local
+        publicIpv6: await publicIp.v6(), //Pegando o ip do servidor local
     }
+    console.log(Network);
+
+    res.render('pages/network',{
+        NetworkData: Network,
+        pageTitle: "Network"
+    });
+    
 });
 
 app.get('/location', async (req, res) => {
