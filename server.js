@@ -1,6 +1,5 @@
 const express    = require("express");
 const bodyParser = require("body-parser");
-const publicIp   = require('public-ip');
 const axios      = require('axios');
 const app        = express();
 const port       = process.env.PORT || 3000;
@@ -20,17 +19,21 @@ app.get('/', async(req, res) => {
 
 });
 
-app.get('/network', async(req, res) => {
+app.get('/network', (req, res) => {
 
-    // let publicIpv4 = await publicIp.v4(); //Pegando o ip do servidor local
-    // let publicIpv6 = await publicIp.v6(); //Pegando o ip do servidor local
+    let publicIpv4 = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-    // console.log("IPV4 ", publicIpv4);
-    // console.log("IPV6 ", publicIpv6);
+    let publicIpv6 = req.socket.address().family;
+    let ipTeste  = req.socket.address().address;
+
+    console.log("IPV4 ", publicIpv6);
+
+    console.log("IPV6 ", publicIpv6);
+    console.log("ipteste ", ipTeste);
 
     res.render('pages/network',{
         pageTitle: "Network",
-        // ipv4: publicIpv4,
+        ipv4: publicIpv4,
         // ipv6: publicIpv6,
     });
     
