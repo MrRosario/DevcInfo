@@ -8,24 +8,45 @@
       <section id="Network" class="network">
 
           <ul class="list">
-            <li class="list__item"> <span>Connection type:</span> <span class="deviceRes" id="connectionType"> </span> </li>
+            <li class="list__item"> 
+              <p class="title">Connection type: <span class="deviceRes" id="connectionType"> </span> </p>  
+            </li>
   
             <li class="list__item"> 
-              <p>Public IP address: <i class="arrow arrow--down"></i> </p> 
+              <p class="title"> Public IP address: <i class="arrow arrow--down"> </i> </p> 
               <ul class="panel">
-                <li class="list__item">My IP: <span class="deviceRes"> <%= ipv4 %> </span></li> 
+                <li class="list__item"> My IP: <span class="deviceRes"> <%= ipv4 %> </span></li> 
               </ul>
             </li>
   
             <li class="list__item"> 
-              <p>Network status: <i class="arrow arrow--down"> </i> </p> 
+              <p class="title"> Network status: <i class="arrow arrow--down"> </i> </p> 
+              
               <ul class="panel">
-                <li class="list__item">Internet Access: <span class="deviceRes" id="intAcc">  </span></li>
-                <li class="list__item">downlink: <span class="deviceRes" id="downlink">  </span></li>
-                <li class="list__item">rtt: <span class="deviceRes" id="rtt">  </span></li>
-                <li class="list__item">downlinkMax: <span class="deviceRes" id="downlinkMax">  </span></li>
-                <li class="list__item">effectiveType: <span class="deviceRes" id="effectiveType">  </span></li>
-                <li class="list__item">saveData: <span class="deviceRes" id="saveData">  </span></li>
+                <li class="list__item"> 
+                  <p class="title"> Internet Access: <span class="deviceRes" id="intAcc">  </span> </p> 
+                </li>
+
+                <li class="list__item"> 
+                  <p class="title"> downlink: <span class="deviceRes" id="downlink">  </span> </p> 
+                </li>
+
+                <li class="list__item"> 
+                  <p class="title"> rtt: <span class="deviceRes" id="rtt">  </span> </p> 
+                </li>
+
+                <li class="list__item"> 
+                  <p class="title"> downlinkMax: <span class="deviceRes" id="downlinkMax">  </span> </p>
+                </li>
+
+                <li class="list__item"> 
+                  <p class="title"> effectiveType: <span class="deviceRes" id="effectiveType">  </span> </p> 
+                </li>
+
+                <li class="list__item"> 
+                  <p class="title"> saveData: <span class="deviceRes" id="saveData">  </span></p> 
+                </li>
+
               </ul>
             </li>
             
@@ -33,7 +54,7 @@
         
       </section>
    </main>
-      
+   <% include ../partials/footer %>
 </body>   
   <% include ../partials/scripts %> 
   <script>

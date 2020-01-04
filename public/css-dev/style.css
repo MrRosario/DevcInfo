@@ -32,9 +32,10 @@ main{
     margin: 0 auto;
 }
 .deviceRes {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bolder;
-    word-break: break-word
+    word-break: break-word;
+    color: #000000;
 }
 .arrow--down{
     transform: rotate(45deg);
@@ -66,6 +67,9 @@ main{
 }
 .panel .list__item {
     padding: 15px 0 0px 5px;
+}
+main ul.list .list__item .title{
+    color: #70757a;
 }
 
 /***********************HEADER*********************/
@@ -128,10 +132,10 @@ main{
         flex-direction: column;
         direction: rtl;
         margin-right: 5px;
-        padding: 3px 16px;
-        border-radius: 20px;
+        padding: 5px 20px;
+        border-radius: 30px;
     }
-    .header .btn__more:hover{
+    .btn__more--hover{
         background-color: rgba(0,0,0, 0.5);
     }
     .header .btn__more .dot{
@@ -146,32 +150,39 @@ main{
         display: none;
     }
     .header__mobile {
-        display: none;
+        display: flex;
         flex-direction: column;
         text-align: center;
-        z-index: 10;
+        z-index: 1;
         background-color: #337ab7;
         margin-top: 2px;
         margin-right: 2px;
-        padding: 8px 0;
-        width: 130px;
+        width: 180px;
         box-sizing: border-box;
-        float: right;
-        height: 120px;
+        position: absolute;
+        right: 0;
+        height: 0px;
+        overflow-y: hidden;
+        transition: height .4s ease-in-out;
+    }
+    .slide--down{
+        height: 138px;
     }
     .header__mobile a{
         text-decoration: none;
         color: #fff;
         font-weight: 700;
-        margin-bottom: 5px;
-        background-color: #244b6d;
-        padding: 5px;
+        font-size: 18px;
+        border-top: 1px solid #000000;
+        padding: 12px 14px;
     }
-    .header__mobile a:last-of-type{
-        margin-bottom: 0px;
+    .header__mobile a:first-child{
+        border-top: none;
     }
-    .activate--header{
-        display: flex;
-        transition: all 2s ease-in-out;
+    .header__mobile a:hover{
+        background-color: rgba(0,0,0,.5);
+    }
+    main ul.list{
+        text-align: center;
     }
 }

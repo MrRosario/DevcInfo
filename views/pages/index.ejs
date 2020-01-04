@@ -8,32 +8,32 @@
         <section id="Hardware" class="hardware">
             <ul class="list">
                 <li class="list__item">
-                    <p>Device Type: <span class="deviceRes" id="dvctype"> </span></p>
+                    <p class="title">Device Type: <span class="deviceRes" id="dvctype"> </span></p>
                 </li>
                 <li class="list__item">
-                    <p>RAM: <span class="deviceRes" id="ram"> </span></p>
+                    <p class="title">RAM: <span class="deviceRes" id="ram"> </span></p>
                 </li>
                 <li class="list__item">
-                    <p>SO: <span class="deviceRes" id="SO"> </span></p>
+                    <p class="title">SO: <span class="deviceRes" id="SO"> </span></p>
                 </li>
                 <li class="list__item">
-                    <p>Screen Size: <span class="deviceRes" id="screenSize"> </span> </p>
+                    <p class="title">Screen Size: <span class="deviceRes" id="screenSize"> </span> </p>
                 </li>
                 <li class="list__item">
-                    <p>CPU:  <i class="arrow arrow--down"></i> </p>
+                    <p class="title">CPU:  <i class="arrow arrow--down"></i> </p>
                     <ul class="panel">
                         <li class="list__item">Number of cores: <span class="deviceRes" id="coreNum"> </span></li>
                     </ul>
                 </li>
                 <li class="list__item">
-                    <p>Battery (live): <i class="arrow arrow--up"></i> </p>
+                    <p class="title">Battery (live): <i class="arrow arrow--up"></i> </p>
                     <ul class="panel" style="display: none;">
                         <li class="list__item">Level: <span class="deviceRes" id="bateryLevel">Detecting... </span></li>
                         <li class="list__item">Charging: <span class="deviceRes" id="bateryStatus">Detecting... </span></li>
                     </ul>
                 </li>
                 <li class="list__item">
-                    <p>Graphic card name:  <i class="arrow arrow--down"></i> </p>
+                    <p class="title">Graphic card name:  <i class="arrow arrow--down"></i> </p>
                     <ul class="panel">
                         <li class="list__item">Vendor: <span class="deviceRes" id="vendor"> </span></li>
                         <li class="list__item">Renderer: <span class="deviceRes" id="renderer"> </span></li>
@@ -42,7 +42,7 @@
             </ul>
         </section>
    </main>
-      
+   <% include ../partials/footer %>
 </body>   
     <script>
         document.addEventListener("DOMContentLoaded", () =>{
@@ -59,7 +59,7 @@
                 this.getVideoCardInfo(),
                 this.cpu()
             },
-            ram: () => {
+            ram: ()=>{
                 let el = document.getElementById("ram");
                 let dvcmen = navigator.deviceMemory;
 

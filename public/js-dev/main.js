@@ -7,13 +7,17 @@ let App = {
         this.hideContent();
         this.hideNavbar();
 
-        // document.addEventListener("click", (e) => {
-        //     console.log(e);
-        //     let headerMobile = document.getElementById("header__mobile");
-        //     if(e.target.className !== 'dot'){
-        //         headerMobile.style.display = 'none';
-        //     }
-        // });
+        document.addEventListener("click", (e) => {
+            console.log(e);
+
+            const headerMobile = document.getElementById("header__mobile");
+            const btn__more = document.getElementById("btn__more");
+
+            if( e.target.className !== 'dot' ){
+                btn__more.classList.remove("btn__more--hover");
+                headerMobile.classList.remove("slide--down");
+            }
+        });
     },
     hideContent: function(){
         let arrow = document.getElementsByClassName("arrow");
@@ -43,7 +47,8 @@ let App = {
         btn__more.addEventListener("click", function(){
             let headerMobile = document.getElementById("header__mobile");
 
-            headerMobile.classList.toggle("activate--header");
+            this.classList.toggle("btn__more--hover");
+            headerMobile.classList.toggle("slide--down");
         });
     }
 }

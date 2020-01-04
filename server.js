@@ -21,12 +21,11 @@ app.get('/', async(req, res) => {
 
 app.get('/network', (req, res) => {
 
-    let publicIpv4 = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
+    //let publicIpv4 = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const publicIpv4 = "189.120.79.24";
     res.render('pages/network',{
         pageTitle: "Network",
         ipv4: publicIpv4,
-        // ipv6: publicIpv6,
     });
     
 });
@@ -34,8 +33,8 @@ app.get('/network', (req, res) => {
 app.get('/location', async(req, res) => {
     try {
 
-        const _publicIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
+        //const _publicIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        const _publicIp = "189.120.79.24";
         const baseUrl  = `http://api.ipstack.com/${_publicIp}?access_key=b8a3261cc4b4d85e9f509e776d3d5228`;
         const response = await axios.get(baseUrl);
 
