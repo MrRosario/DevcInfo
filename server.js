@@ -7,9 +7,9 @@ const port       = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('trust proxy', true);
-
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs');
+
 
 app.get('/', async(req, res) => {
 
@@ -18,23 +18,20 @@ app.get('/', async(req, res) => {
     });
 
 });
-
 app.get('/network', (req, res) => {
 
-    //let publicIpv4 = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const publicIpv4 = "189.120.79.24";
+    let publicIpv4 = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    
     res.render('pages/network',{
         pageTitle: "Network",
         ipv4: publicIpv4,
-    });
-    
+    }); 
 });
-
 app.get('/location', async(req, res) => {
     try {
 
-        //const _publicIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        const _publicIp = "189.120.79.24";
+        const _publicIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        
         const baseUrl  = `http://api.ipstack.com/${_publicIp}?access_key=b8a3261cc4b4d85e9f509e776d3d5228`;
         const response = await axios.get(baseUrl);
 
