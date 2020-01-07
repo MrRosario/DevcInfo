@@ -63,36 +63,45 @@
                 let el = document.getElementById("ram");
                 let dvcmen = navigator.deviceMemory;
 
-                el.innerHTML = dvcmen || "unknown"
+                el.innerHTML = dvcmen || "Unknown"
                 console.log(dvcmen);
             },
             battery: ()=>{
-                let e = document.getElementById("bateryLevel")
-                , n = document.getElementById("bateryStatus");
-                navigator.getBattery().then(t=>{
-                    function o() {
-                        n.textContent = t.charging ? "Yes" : "No",
-                        console.log("Battery charging? " + (t.charging ? "Yes" : "No"))
-                    }
-                    function i() {
-                        e.innerHTML = parseInt(100 * t.level) + "%",
-                        console.log("Battery level: " + 100 * t.level + "%")
-                    }
-                    o(),
-                    i(),
-                    t.addEventListener("chargingchange", ()=>{
-                        o()
-                    }
-                    ),
-                    t.addEventListener("levelchange", ()=>{
-                        i()
-                    }
-                    )
+                let bateryLevel  = document.getElementById("bateryLevel");
+                let bateryStatus = document.getElementById("bateryStatus");
+
+                try{
+                    navigator.getBattery().then((res) => {
+                        function chargingchange() {
+                            bateryStatus.textContent = t.charging ? "Yes" : "No",
+                            console.log("Battery charging? " + (res.charging ? "Yes" : "No"))
+                        }
+
+                        function levelchange() {
+                            bateryLevel.innerHTML = parseInt(100 * res.level) + "%",
+                            console.log("Battery level: " + 100 * res.level + "%")
+                        }
+                        
+                        chargingchange(),
+                        levelchange(),
+                        
+                        res.addEventListener("chargingchange", ()=>{
+                            chargingchange()
+                        });
+
+                        res.addEventListener("levelchange", ()=>{
+                            levelchange()
+                        });
+                    });
+                }catch(e){
+                    bateryLevel.innerHTML = "Unknown"; 
+                    bateryStatus.innerHTML = "Unknown";
                 }
-                )
+                
             },
             detectDevice: ()=>{
                 let el = document.getElementById("dvctype");
+                
                 if (window.innerWidth > 768) {
                     var devType = "Desktop";
                     el.innerHTML = devType,
