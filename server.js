@@ -13,31 +13,57 @@ app.set('view engine', 'ejs');
 
 app.get('/', async(req, res) => {
 
+    let Tags = {
+        titulo: `DevcInfo - Devcinfo`,
+        meta_description: `DevcInfo: is a web browser tool to vizualize device's information.`,
+        meta_keywords: `Device,Info,browser,security,privacy,testing,troubleshooting,fingerprinting,information,online`,
+        og_title: `DevcInfo - Devcinfo`,
+        meta_URL: `https://www.devcinfo.com`
+    };
+
     res.render('pages/index',{
-        pageTitle: "Home"
+        pageTitle: "Home",
+        meta: Tags
     });
 
 });
 app.get('/network', (req, res) => {
+
+    let Tags = {
+        titulo: `Find out more about my network - Devcinfo`,
+        meta_description: `Find out more about your network status`,
+        meta_keywords: `Public IP address, Connection type, Network status`,
+        og_title: `Find out more about my network - Devcinfo`,
+        meta_URL: `https://www.devcinfo.com/network`
+    };
 
     let publicIpv4 = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     
     res.render('pages/network',{
         pageTitle: "Network",
         ipv4: publicIpv4,
+        meta: Tags
     }); 
 });
 app.get('/location', async(req, res) => {
     try {
 
+        let Tags = {
+            titulo: `My Location - Devcinfo`,
+            meta_description: `Your location as seen from the Internet using your IP address.`,
+            meta_keywords: `my location, my current location, my location now, what is my location. My Current Location. We detect Your Coordinate and Location Name.`,
+            og_title: `My Location - Devcinfo`,
+            meta_URL: `https://www.devcinfo.com/location`
+        };
+
         const _publicIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        
         const baseUrl  = `http://api.ipstack.com/${_publicIp}?access_key=b8a3261cc4b4d85e9f509e776d3d5228`;
         const response = await axios.get(baseUrl);
 
         res.render('pages/location',{
             pageTitle: "Location",
-            location: response.data
+            location: response.data,
+            meta: Tags
         });
     } 
     catch (error) {
