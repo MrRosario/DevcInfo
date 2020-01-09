@@ -1,6 +1,7 @@
 const express    = require("express");
 const bodyParser = require("body-parser");
 const axios      = require('axios');
+const path       = require('path');
 const app        = express();
 const port       = process.env.PORT || 3000;
 
@@ -10,7 +11,18 @@ app.set('trust proxy', true);
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs');
 
-
+app.all("*", function(req, res, next){
+    if(req.get('X-Forwarded-Proto') == 'https' || req.hostname == 'localhost'){
+      next();
+    }
+    else if(req.get('X-Forwarded-Proto') != 'https' && req.get('X-Forwarded-Port') != '443') {
+      res.redirect('https://' + req.hostname + req.url);
+    }
+    else if(!req.headers.host.match(/^www\..*/i)) {
+      res.redirect('https://' + req.headers.host + req.url);
+    }
+});
+  
 app.get('/', async(req, res) => {
 
     let Tags = {
@@ -70,12 +82,23 @@ app.get('/location', async(req, res) => {
         console.error(error);
     }
 });
-
 // app.get('/browser', (req, res) => {
 //     res.render('pages/browser',{
 //         pageTitle: "Browser"
 //     });
 // });
+app.get("/sw.js", function(req, res){
+    res.header("Content-Type", "text/javascript");
+    res.sendFile(path.join(__dirname,"./sw.js"));
+});
+app.get("/sitemap.xml", function(req, res){
+    res.type('text/xml');
+    res.sendFile(path.join(__dirname,"./sitemap.xml"));
+});
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.sendFile(path.join(__dirname,"./robots.txt"));
+});
 
 app.listen(port, () => {
     console.log(`DevcInfo running on port ${port}`);
