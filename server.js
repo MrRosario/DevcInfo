@@ -17,11 +17,9 @@ app.all("*", function(req, res, next){
     }
     else if(req.get('X-Forwarded-Proto') != 'https' && req.get('X-Forwarded-Port') != '443') {
       res.redirect('https://' + req.hostname + req.url);
-      console.log(req.hostname + req.url);
     }
     else if(!req.headers.host.match(/^www\..*/i)) {
       res.redirect('https://' + req.headers.host + req.url);
-      console.log(req.headers.host + req.url)
     }
 });
   
