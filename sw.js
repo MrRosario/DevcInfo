@@ -47,7 +47,7 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
-window.addEventListener('beforeinstallprompt', (e) => {
+self.addEventListener('beforeinstallprompt', (e) => {
   // Prevent Chrome 67 and earlier from automatically showing the prompt
   e.preventDefault();
   console.log('Prevent Chrome 67 and earlier from automatically showing the prompt');
