@@ -26,9 +26,9 @@ app.all("*", function(req, res, next){
 app.get('/', async(req, res) => {
 
     let Tags = {
-        titulo: `DevcInfo - Devcinfo`,
-        meta_description: `DevcInfo: is a web browser tool to vizualize device's information.`,
-        meta_keywords: `Device,Info,browser,security,privacy,testing,troubleshooting,fingerprinting,information,online`,
+        titulo: `Device info - Devcinfo`,
+        meta_description: `My device information on the web, findout more about your device info, device type, ram, SO, Screen Size, Battery, Graphic card`,
+        meta_keywords: `Device,Info,browser,security,privacy,testing,troubleshooting,fingerprinting,information,online, my device info`,
         og_title: `DevcInfo - Devcinfo`,
         meta_URL: `https://www.devcinfo.com`
     };

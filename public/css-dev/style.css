@@ -65,12 +65,14 @@ main{
     border-left-color: #337ab7;
     border-left-style: groove;
     border-left-width: 2px;
+    padding: 0px 20px;
 }
 .panel .list__item {
     padding: 15px 0 0px 5px;
 }
 main ul.list .list__item .title{
     color: #70757a;
+    font-size: 20px;
 }
 
 /***********************HEADER*********************/
@@ -82,9 +84,9 @@ main ul.list .list__item .title{
     width: 100%;
     background-color: #337ab7
 }
-.header__logo{
+.header_h1{
     margin-left: 20px;
-    margin-top: 6px;
+    margin-top: 10px;
 }
 .header__logo img{
     width: 130px;
