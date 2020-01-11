@@ -1,15 +1,17 @@
-const express    = require("express");
-const bodyParser = require("body-parser");
-const axios      = require('axios');
-const path       = require('path');
-const app        = express();
-const port       = process.env.PORT || 3000;
+const express     = require("express");
+const bodyParser  = require("body-parser");
+const axios       = require('axios');
+const path        = require('path');
+const helmet      = require('helmet');
+const app         = express();
+const port        = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('trust proxy', true);
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs');
+app.use(helmet());
 
 app.all("*", function(req, res, next){
     if(req.get('X-Forwarded-Proto') == 'https' || req.hostname == 'localhost'){
@@ -57,7 +59,7 @@ app.get('/network', (req, res) => {
         meta: Tags
     }); 
 });
-app.get('/location', async(req, res) => {
+app.get('/location', async(req, res, next) => {
     try {
 
         let Tags = {
@@ -78,15 +80,15 @@ app.get('/location', async(req, res) => {
             meta: Tags
         });
     } 
-    catch (error) {
-        console.error(error);
+    catch (e) {
+        next(e);
     }
 });
-app.get('/browser', (req, res) => {
-    res.render('pages/browser',{
-        pageTitle: "Browser"
-    });
-});
+// app.get('/browser', (req, res) => {
+//     res.render('pages/browser',{
+//         pageTitle: "Browser"
+//     });
+// });
 app.get("/sw.js", function(req, res){
     res.header("Content-Type", "text/javascript");
     res.sendFile(path.join(__dirname,"./sw.js"));
