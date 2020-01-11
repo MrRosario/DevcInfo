@@ -82,11 +82,11 @@ app.get('/location', async(req, res) => {
         console.error(error);
     }
 });
-// app.get('/browser', (req, res) => {
-//     res.render('pages/browser',{
-//         pageTitle: "Browser"
-//     });
-// });
+app.get('/browser', (req, res) => {
+    res.render('pages/browser',{
+        pageTitle: "Browser"
+    });
+});
 app.get("/sw.js", function(req, res){
     res.header("Content-Type", "text/javascript");
     res.sendFile(path.join(__dirname,"./sw.js"));

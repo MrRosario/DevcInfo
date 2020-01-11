@@ -16,7 +16,7 @@ body {
     display: none;
 }
 .hardware, .network, .location{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 ul li {
     list-style-type: none
@@ -28,8 +28,9 @@ ul li {
 
 main{
     padding: 0 10px 0 10px;
-    width: 80%;
-    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 .deviceRes {
     font-size: 20px;

@@ -63,8 +63,7 @@
                 let el = document.getElementById("ram");
                 let dvcmen = navigator.deviceMemory;
 
-                el.innerHTML = dvcmen || "Unknown"
-                console.log(dvcmen);
+                el.innerHTML = dvcmen || "Unknown";
             },
             battery: ()=>{
                 let bateryLevel  = document.getElementById("bateryLevel");
@@ -73,13 +72,11 @@
                 try{
                     navigator.getBattery().then((res) => {
                         function chargingchange() {
-                            bateryStatus.textContent = t.charging ? "Yes" : "No",
-                            console.log("Battery charging? " + (res.charging ? "Yes" : "No"))
+                            bateryStatus.textContent = res.charging ? "Yes" : "No";
                         }
 
                         function levelchange() {
-                            bateryLevel.innerHTML = parseInt(100 * res.level) + "%",
-                            console.log("Battery level: " + 100 * res.level + "%")
+                            bateryLevel.innerHTML = parseInt(100 * res.level) + "%";
                         }
                         
                         chargingchange(),
@@ -104,8 +101,7 @@
                 
                 if (window.innerWidth > 768) {
                     var devType = "Desktop";
-                    el.innerHTML = devType,
-                    console.log("=======device======", devType)
+                    el.innerHTML = devType;
                 } else{
                     window.innerWidth > 481 && window.innerWidth < 767 ? (devType = "Tablet",
                     el.innerHTML = devType) : window.innerWidth < 480 && (devType = "Mobile",
@@ -221,8 +217,8 @@
                         }
                     }
                 }.init();
-                document.getElementById("SO").innerHTML = `${e.os.name} ${e.os.version}`,
-                console.log(`${e.os.name} ${e.os.version}, ${e.browser.name} ${e.browser.version}`)
+                document.getElementById("SO").innerHTML = `${e.os.name} ${e.os.version}`;
+                //console.log(`${e.os.name} ${e.os.version}, ${e.browser.name} ${e.browser.version}`)
             },
             screen: ()=>{
                 let e = document.getElementById("screenSize");
