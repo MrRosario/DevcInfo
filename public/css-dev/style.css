@@ -32,6 +32,22 @@ main{
     display: flex;
     justify-content: center;
 }
+.definicoes{
+    border: 1px solid #000000;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+    margin-top: 40px;
+    max-width: 800px;
+}
+.definicoes h1,
+.definicoes h2{
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+.definicoes p{
+    margin-bottom: 20px;
+}
 .deviceRes {
     font-size: 20px;
     font-weight: bolder;

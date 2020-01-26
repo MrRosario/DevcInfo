@@ -28,10 +28,10 @@ app.all("*", function(req, res, next){
 app.get('/', async(req, res) => {
 
     let Tags = {
-        titulo: `Device info - Devcinfo`,
+        titulo: `My Device information | devcinfo.com`,
         meta_description: `My device information on the web, findout more about your device info, device type, ram, SO, Screen Size, Battery, Graphic card`,
         meta_keywords: `Device,Info,browser,security,privacy,testing,troubleshooting,fingerprinting,information,online, my device info`,
-        og_title: `DevcInfo - Devcinfo`,
+        og_title: `My Device information | devcinfo.com`,
         meta_URL: `https://www.devcinfo.com`
     };
 
@@ -44,10 +44,10 @@ app.get('/', async(req, res) => {
 app.get('/network', (req, res) => {
 
     let Tags = {
-        titulo: `Find out more about my network - Devcinfo`,
-        meta_description: `Find out more about your network status`,
+        titulo: `What Is My IP? - (IPV4) shows my public ip address | devcinfo.com`,
+        meta_description: `See your real public IPv4 and IPv6 address and find out more about your network`,
         meta_keywords: `Public IP address, Connection type, Network status`,
-        og_title: `Find out more about my network - Devcinfo`,
+        og_title: `What Is My IP - (IPV4) shows my public ip address | devcinfo.com`,
         meta_URL: `https://www.devcinfo.com/network`
     };
 
@@ -63,7 +63,7 @@ app.get('/location', async(req, res, next) => {
     try {
 
         let Tags = {
-            titulo: `My Location - Devcinfo`,
+            titulo: `What is my location? - Devcinfo`,
             meta_description: `Your location as seen from the Internet using your IP address.`,
             meta_keywords: `my location, my current location, my location now, what is my location. My Current Location. We detect Your Coordinate and Location Name.`,
             og_title: `My Location - Devcinfo`,
